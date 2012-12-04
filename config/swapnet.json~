@@ -1,0 +1,95 @@
+{
+  "network": {
+    "name": "SWAP", 
+    "motes": [
+      {
+        "registers": [
+          {
+            "endpoints": [
+              {
+                "name": "Voltage", 
+                "timestamp": "26 Nov 2012 14:04:30", 
+                "value": "1.244", 
+                "units": [
+                  "V"
+                ], 
+                "type": "num", 
+                "id": "10.11.0", 
+                "unit": "V"
+              }
+            ], 
+            "id": 11, 
+            "name": "Voltage supply"
+          }, 
+          {
+            "endpoints": [
+              {
+                "name": "Temperature", 
+                "timestamp": "26 Nov 2012 14:04:30", 
+                "value": "22.5", 
+                "units": [
+                  "C", 
+                  "F", 
+                  "K"
+                ], 
+                "type": "num", 
+                "id": "10.12.0", 
+                "unit": "C"
+              }
+            ], 
+            "id": 12, 
+            "name": "Temperature"
+          }
+        ], 
+        "pcode": "0000000100000004", 
+        "address": 10, 
+        "name": "Temperature sensor", 
+        "manufacturer": "panStamp"
+      }, 
+      {
+        "registers": [
+          {
+            "endpoints": [
+              {
+                "name": "Voltage", 
+                "timestamp": "26 Nov 2012 14:04:39", 
+                "value": "1.308", 
+                "units": [
+                  "V"
+                ], 
+                "type": "num", 
+                "id": "11.11.0", 
+                "unit": "V"
+              }
+            ], 
+            "id": 11, 
+            "name": "Voltage supply"
+          }, 
+          {
+            "endpoints": [
+              {
+                "name": "Temperature", 
+                "timestamp": "26 Nov 2012 14:04:39", 
+                "value": "25.2", 
+                "units": [
+                  "C", 
+                  "F", 
+                  "K"
+                ], 
+                "type": "num", 
+                "id": "11.12.0", 
+                "unit": "C"
+              }
+            ], 
+            "id": 12, 
+            "name": "Temperature"
+          }
+        ], 
+        "pcode": "0000000100000004", 
+        "address": 11, 
+        "name": "Temperature sensor", 
+        "manufacturer": "panStamp"
+      }
+    ]
+  }
+}

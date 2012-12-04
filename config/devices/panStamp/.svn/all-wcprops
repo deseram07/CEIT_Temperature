@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp
+END
+lcddriver.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/lcddriver.xml
+END
+temphum.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/temphum.xml
+END
+bininps.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/bininps.xml
+END
+temppress.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/temppress.xml
+END
+binouts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/binouts.xml
+END
+temp.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/temp.xml
+END
+rgbdriver.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/rgbdriver.xml
+END
+chronos.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/chronos.xml
+END
