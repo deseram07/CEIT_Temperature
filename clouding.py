@@ -41,7 +41,7 @@ class PachubePacket:
         @return response from Pachube
         """
         header = {'X-PachubeApiKey': self.sharing_key}
-        url = "api.pachube.com"
+        url = "api.cosm.com"
         res = None
 
         try:

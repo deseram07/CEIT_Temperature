@@ -29,15 +29,10 @@ __date__  ="$Jan 23, 2012$"
 from swap.SwapInterface import SwapInterface
 from swap.protocol.SwapDefs import SwapState
 from swap.xmltools.XmlSettings import XmlSettings
-from swap.xmltools.XmlSerial import XmlSerial
-from swap.xmltools.XmlNetwork import XmlNetwork
 from MQTT import MQTT
 
-import os
-import sys
 from nyamuk import nyamuk
 import nyamuk.nyamuk_const as NC
-from nyamuk import event
 import json
 
 class SwapManager(SwapInterface):
@@ -65,6 +60,7 @@ class SwapManager(SwapInterface):
         """
         if self._print_swap == True:
             print "New endpoint with Reg ID = " + str(endpoint.getRegId()) + " : " + endpoint.name
+            avg.append([endpoint.name,0,0])
 
 
     def moteStateChanged(self, mote):
@@ -127,12 +123,12 @@ class SwapManager(SwapInterface):
             L = len(data)
             data = data[1:L-1]
 #            print data
-            if (endp.name == "Temperature"):
-                if(MQTT.ny.publish(MQTT.topic_temp, data) == 0,):
-                    print "published = " + data
-                else:
-                    print "publish failed"
-                MQTT.ny.loop()
+#            if (endp.name == "Temperature" || endp.name == "Voltage"):
+            if(MQTT.ny.publish(MQTT.topic_temp, data, retain = True) == 0,):
+                print "published = " + data
+            else:
+                print "publish failed"
+            MQTT.ny.loop()
                       
         
     def get_status(self, endpoints):
