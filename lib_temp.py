@@ -27,7 +27,7 @@ def signal_handler(signal, frame):
     sys.exit(0)
 
 if __name__ == '__main__':
-    
+    MQTT.pi_id = sys.argv[1]
     settings = os.path.join(os.path.dirname(sys.argv[0]), "config", "settings.xml")
 
     # Catch possible SIGINT signals
@@ -49,3 +49,4 @@ if __name__ == '__main__':
         ex.log()
 
     signal.pause()
+

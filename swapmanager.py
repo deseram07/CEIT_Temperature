@@ -60,7 +60,6 @@ class SwapManager(SwapInterface):
         """
         if self._print_swap == True:
             print "New endpoint with Reg ID = " + str(endpoint.getRegId()) + " : " + endpoint.name
-            avg.append([endpoint.name,0,0])
 
 
     def moteStateChanged(self, mote):
@@ -124,13 +123,28 @@ class SwapManager(SwapInterface):
             data = data[1:L-1]
 #            print data
 #            if (endp.name == "Temperature" || endp.name == "Voltage"):
-            if(MQTT.ny.publish(MQTT.topic_temp, data, retain = True) == 0,):
-                print "published = " + data
-            else:
-                print "publish failed"
-            MQTT.ny.loop()
-                      
-        
+            print "updating list"
+            self.db_connect()
+            database_data = self.db_subscribe()
+            database_data = str(database_data)
+            
+            try:
+                pilist = json.loads(database_data)
+                pis = pilist["pi"]
+                for i in pis:
+                    if str(i['id']) == MQTT.pi_id:
+                        motes = i['mote']
+                        for j in motes:
+                            if str(j['id']) == str(endp.id):
+                                print "****************\n****************\n****************\n****************\n"
+                                if(MQTT.ny.publish(MQTT.topic_temp, data, retain = True) == 0,):
+                                    print "published = " + data
+                                else:
+                                    print "publish failed"
+                                MQTT.ny.loop()
+            except ValueError:
+                print "Error"
+            
     def get_status(self, endpoints):
         """
         Return network status as a list of endpoints in JSON format
@@ -163,7 +177,34 @@ class SwapManager(SwapInterface):
         # Stop SWAP server
         self.server.stop()
 
+    def db_subscribe(self):
+        while 1:
+            topic_db = MQTT.topic_db + MQTT.pi_id[0]
+            rdb =MQTT.database5.subscribe(topic_db,0)
+            if rdb == NC.ERR_SUCCESS:
+                ev = MQTT.database5.pop_event()
+                if ev != None: 
+                    if ev.type == NC.CMD_PUBLISH:
+                        payload = ev.msg.payload
+                        if payload is not None and str(ev.msg.topic) == topic_db:
+                            ev = None
+                            break
+                    elif ev.type == 1000:
+                        print "Network Error. Msg = ", ev.msg
+                rdb = MQTT.database5.loop()
+        return payload
     
+    def db_connect(self):
+        while 1:
+            MQTT.database5 = nyamuk.Nyamuk(MQTT.client_dblib, None, None, MQTT.server)
+            rdb = MQTT.database5.connect()
+            if (rdb != NC.ERR_SUCCESS):
+                print "Can't connect"
+                time.sleep(30)
+            else:
+                print "Connection successful"
+            return
+
     def __init__(self, swap_settings=None):
         """
         Class constructor

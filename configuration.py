@@ -64,7 +64,7 @@ class configuration(wx.Frame):
         self.Bind(wx.EVT_TEXT, self.EvtText, self.addmoteid)
         
 #        thingspeak id
-        self.lbladdfield =  wx.StaticText(self, label = "Field No", pos = (90, 185))
+        self.lbladdfield =  wx.StaticText(self, label = "Field ID", pos = (90, 185))
         self.addfield = wx.TextCtrl(self,pos = (90,205), size = (60,-1))
         self.Bind(wx.EVT_TEXT, self.EvtText2, self.addfield)
         
