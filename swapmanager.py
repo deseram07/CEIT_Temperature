@@ -30,6 +30,7 @@ from swap.SwapInterface import SwapInterface
 from swap.protocol.SwapDefs import SwapState
 from swap.xmltools.XmlSettings import XmlSettings
 from MQTT import MQTT
+import sys
 
 from nyamuk import nyamuk
 import nyamuk.nyamuk_const as NC
@@ -137,6 +138,8 @@ class SwapManager(SwapInterface):
                         for j in motes:
                             if str(j['id']) == str(endp.id):
                                 print "****************\n****************\n****************\n****************\n"
+                                MQTT.ny = nyamuk.Nyamuk(MQTT.client, server = MQTT.server)
+                                MQTT.rc = MQTT.ny.connect()
                                 if(MQTT.ny.publish(MQTT.topic_temp, data, retain = True) == 0,):
                                     print "published = " + data
                                 else:
@@ -176,6 +179,7 @@ class SwapManager(SwapInterface):
         """
         # Stop SWAP server
         self.server.stop()
+        sys.exit(0)
 
     def db_subscribe(self):
         while 1:
