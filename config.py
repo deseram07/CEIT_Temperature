@@ -6,7 +6,7 @@ Created on Nov 22, 2012
 class config:
     np = None
     ns = None
-    server = "summer.ceit.uq.edu.au"
+    server = "winter.ceit.uq.edu.au"
     client_pub = "Lib_config-pub"
     client_sub = "Lib_config-sub"
     topic_retrieve = "LIB/config/#"

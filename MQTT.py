@@ -20,7 +20,7 @@ class MQTT:
     client_db3d = "LIB_database3d"
     client_dbsense = "LIB_databaseSense"
     client_dblib = "LIB_databaseBase"
-    server = "130.102.129.171"
+    server = "winter.ceit.uq.edu.au"
     client = "LIB_temp"
     client_sub = "Edittor"
     topic_db = "/LIB/config/level"
