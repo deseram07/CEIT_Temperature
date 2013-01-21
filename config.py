@@ -14,7 +14,7 @@ class config:
 
     new_pi = '{"pi": [{"id": 10, "mote":[]}]}'
     newpi_id = {"id": 10, "mote":[]}
-    mote_id = {"id":"11.11.11", "TS":"asds1", "sen":"asdfa"}
+    mote_id = {"id":"11.11.11"}
     
     
 #    {"pi": [{"id": 101, "mote": [{"id": 0}]}]}

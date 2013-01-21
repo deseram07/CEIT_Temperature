@@ -10,6 +10,7 @@ import signal
 from nyamuk import nyamuk
 import nyamuk.nyamuk_const as NC
 import json
+import random
 
 from config import config
 import wx
@@ -59,19 +60,19 @@ class configuration(wx.Frame):
 #        edit window
 #        mote id
         wx.StaticBox(self, -1,"Add Mote:", (4, 165), size=(235,110))
-        self.lbladdmoteid = wx.StaticText(self, label = "Mote ID", pos = (10,185))
-        self.addmoteid = wx.TextCtrl(self, pos = (10,205), size = (60,-1))
+        self.lbladdmoteid = wx.StaticText(self, label = "Mote ID", pos = (80,185))
+        self.addmoteid = wx.TextCtrl(self, pos = (80,205), size = (60,-1))
         self.Bind(wx.EVT_TEXT, self.EvtText, self.addmoteid)
         
-#        thingspeak id
-        self.lbladdfield =  wx.StaticText(self, label = "Field ID", pos = (90, 185))
-        self.addfield = wx.TextCtrl(self,pos = (90,205), size = (60,-1))
-        self.Bind(wx.EVT_TEXT, self.EvtText2, self.addfield)
-        
-#        sense id
-        self.lbladdfield =  wx.StaticText(self, label = "Sen.se ID", pos = (170, 185))
-        self.addsen = wx.TextCtrl(self,pos = (170,205), size = (60,-1))
-        self.Bind(wx.EVT_TEXT, self.EvtText3, self.addsen)
+##        thingspeak id
+#        self.lbladdfield =  wx.StaticText(self, label = "Field ID", pos = (90, 185))
+#        self.addfield = wx.TextCtrl(self,pos = (90,205), size = (60,-1))
+#        self.Bind(wx.EVT_TEXT, self.EvtText2, self.addfield)
+#        
+##        sense id
+#        self.lbladdfield =  wx.StaticText(self, label = "Sen.se ID", pos = (170, 185))
+#        self.addsen = wx.TextCtrl(self,pos = (170,205), size = (60,-1))
+#        self.Bind(wx.EVT_TEXT, self.EvtText3, self.addsen)
         
 #        register pi
         self.addpi = wx.StaticBox(self,-1, label = "Add Base Station:", pos = (4, 275), size=(235,90))
@@ -91,15 +92,27 @@ class configuration(wx.Frame):
         
 #        add mote
         self.addmote = wx.Button(self, label = "Add", pos = (70,240))
+        self.addmote.BackgroundColour = (255,127,80)
+#        self.flash()
         self.Bind(wx.EVT_BUTTON, self.add_mote, self.addmote)
         
 #        add pi
         self.addpi = wx.Button(self, label = "Add", pos = (70,330))
+        self.addpi.BackgroundColour = (255,127,80)
         self.Bind(wx.EVT_BUTTON, self.add_pi, self.addpi)
 
 #        close window
         self.Bind(wx.EVT_CLOSE, self.closewindow)
- 
+        
+    def flash(self):
+        self.addmote.BackgroundColour = (random.randrange(255), random.randrange(255), random.randrange(255))
+        self.addpi.BackgroundColour = (random.randrange(255), random.randrange(255), random.randrange(255))
+        self.BackgroundColour = (random.randrange(255), random.randrange(255), random.randrange(255))
+        self.delpi.BackgroundColour = (random.randrange(255), random.randrange(255), random.randrange(255))
+        self.delmote.BackgroundColour = (random.randrange(255), random.randrange(255), random.randrange(255))
+#        self.addmote.Position = (random.randrange(500), random.randrange(150))
+        self.Refresh()
+        wx.CallLater(100, self.flash)
     
     def EvtComboBox(self, event):
         self.currentlvl = event.GetString();
@@ -133,6 +146,7 @@ class configuration(wx.Frame):
         
     def Evt2ComboBox(self, event):
         self.currentpi = event.GetString()
+        print "current pi = ", self.currentpi
 #        subscribe to the current level data
         pionlevel_topic = config.topic_level + self.currentlvl
         topic = str(pionlevel_topic)
@@ -142,18 +156,25 @@ class configuration(wx.Frame):
         try:
             pilist = json.loads(data)
             pis  = pilist["pi"]
+            print "in here"
             for i in pis:
+                lol = pilist["pi"]
+                print "piava = ", lol
+                print "pi = ", pis 
                 if str(i['id']) == str(self.currentpi):
+                    print "id selected", i['id']
+                    print "requied", self.currentpi
                     motes = i['mote']
-                if len(motes) == 0:
-                        print "No motes present"
-                        self.editmotelist.Clear()
-                        self.editmotelist.SetValue('')
-                else:
-                    for i in motes:
-                        data = str(i['id']) + ', ' + str(i['TS']) + ', ' + str(i['sen'])
-                        self.editmotelist.Append(data)
-                break 
+                    print "mote = ", motes
+                    if len(motes) == 0:
+                            print "No motes present"
+                            self.editmotelist.Clear()
+                            self.editmotelist.SetValue('')
+                    else:
+                        for i in motes:
+                            data = str(i['id'])
+                            self.editmotelist.Append(data)
+                        break 
         except ValueError:
             wx.MessageBox("Error with data", "Error", wx.OK)
         
@@ -170,13 +191,13 @@ class configuration(wx.Frame):
         self.newmote = event.GetString()
         print 'Evttext1:', event.GetString()
     
-    def EvtText2(self,event):
-        self.newfeild = event.GetString()
-        print 'Evttext2:', event.GetString()
-    
-    def EvtText3(self,event):
-        self.newsen = event.GetString()
-        print 'Evttext3:', event.GetString()
+#    def EvtText2(self,event):
+#        self.newfeild = event.GetString()
+#        print 'Evttext2:', event.GetString()
+#    
+#    def EvtText3(self,event):
+#        self.newsen = event.GetString()
+#        print 'Evttext3:', event.GetString()
         
     def deletemote(self,event):
         print self.currentpi
@@ -195,7 +216,7 @@ class configuration(wx.Frame):
                 for i in pilist['pi']:
                     if str(i['id']) == str(self.currentpi):
                         for j in i['mote']:
-                            if (str(j['id'])+', '+str(j['TS']) + ', ' + str(j['sen'])) ==  str(self.moteselection):
+                            if str(j['id']) ==  str(self.moteselection):
                                 msg = wx.MessageDialog(self,"Are you sure you want to delete current mote", "Detele Mote", wx.YES_NO)
                                 result = msg.ShowModal()
                                 if result == wx.ID_YES:
@@ -212,6 +233,7 @@ class configuration(wx.Frame):
             data = json.dumps(pilist)
             self.publish(topic, data, True)
             self.editmotelist.SetValue('')
+            self.setlevel.SetValue('')
         else:
             wx.MessageBox("You need to select a mote to delete!", "Error", wx.OK)
             
@@ -246,7 +268,7 @@ class configuration(wx.Frame):
             wx.MessageBox("You need to select a base station to delete!", "Error", wx.OK)
             
     def add_mote(self,event):
-        if self.newfeild is not None and self.newmote is not None and self.currentpi is not None and self.newsen is not None:
+        if self.newmote is not None and self.currentpi is not None:
             pionlevel_topic = config.topic_level + self.currentlvl
             print "pilist", pionlevel_topic
             topic = str(pionlevel_topic)
@@ -262,25 +284,19 @@ class configuration(wx.Frame):
                     if str(i["id"]) == str(self.currentpi):
                         new_mote = config.mote_id
                         new_mote['id'] = str(self.newmote)
-                        new_mote['TS'] = str(self.newfeild)
-                        new_mote['sen'] = str(self.newsen)
                         dup = self.check(new_mote)
                         print dup
-                        if dup[0] == 0 and dup[1] == 0 and dup[2] == 0:
+                        if dup == 0:
                             msg = wx.MessageDialog(self,
-                                                   "Are you sure you want to add \nMote id:\t" + new_mote['id']+ "\nThingspeak id:\t" + new_mote['TS'] + "\nSen.se id:\t" + new_mote['sen'],
+                                                   "Are you sure you want to add \nMote id:\t" + new_mote['id'],
                                                     "Add Mote", wx.YES_NO)
                             result = msg.ShowModal()
                             if result == wx.ID_YES:
                                 pilist['pi'][count1]['mote'].append(new_mote)
                             break
                         else:
-                            if dup[0] > 0:
+                            if dup > 0:
                                 wx.MessageBox("Mote id already exists", "Error", wx.OK)
-                            elif dup[1] > 0:
-                                wx.MessageBox("Thingspeak id already exists", "Error", wx.OK)
-                            elif dup[2] > 0:
-                                wx.MessageBox("Sen.se id already exists", "Error", wx.OK)
                             break
                     count1 += 1
                 print pilist
@@ -289,10 +305,8 @@ class configuration(wx.Frame):
             except ValueError:
                 wx.MessageBox("Error with data", "Error", wx.OK)
         else:
-            wx.MessageBox("No motes selected", "Info", wx.OK)
+            wx.MessageBox("Either a Building level or Base station has not been selected", "Info", wx.OK)
         self.addmoteid.SetValue('')
-        self.addfield.SetValue('')
-        self.addsen.SetValue('')
      
     def check(self, mote):
         for i in range(1,5):
@@ -302,8 +316,6 @@ class configuration(wx.Frame):
             data = self.subscribe(topic)
             data = str(data)
             dupid = 0
-            dupts = 0
-            dupsen = 0
             try:
                 pilist = json.loads(data)
                 pis  = pilist["pi"]
@@ -314,18 +326,13 @@ class configuration(wx.Frame):
                         if str(mote['id'])==str(j['id']):
                             dupid += 1
                             break
-                        elif str(mote['TS'])==str(j['TS']):
-                            dupts += 1
-                            break
-                        elif str(mote['sen'])==str(j['sen']):
-                            dupsen += 1
-                    if dupid>0 or dupts>0 or dupsen>0:
+                    if dupid>0:
                         break
             except ValueError:
                 print "Error"
-            if dupid>0 or dupts>0 or dupsen>0:
+            if dupid>0:
                 break
-        return [dupid, dupts, dupsen]
+        return dupid
     
     def add_pi(self,event):
         if self.deletelevel != None:
