@@ -27,6 +27,7 @@ def handle_payload(ev):
         data = json.dumps(MQTT.packet)
         start = time.time()
         print data
+        connect()
         while 1:
             if (MQTT.threed_pub.publish(MQTT.topic_3d, data, retain = True) == 0):
                 print "published = " + data
@@ -38,7 +39,7 @@ def handle_payload(ev):
             
 def connect():
     while 1:
-        MQTT.threed_pub = nyamuk.Nyamuk(MQTT.client_3bpub, None, None, MQTT.server)
+        MQTT.threed_pub = nyamuk.Nyamuk("aadfvb23456", None, None, MQTT.server)
         rcpub = MQTT.threed_pub.connect()
         if (rcpub != NC.ERR_SUCCESS):
             print "Can't connect"
@@ -74,6 +75,6 @@ def start_nyamuk(server, client_id, topic, username = None, password = None):
                 break
     
 if __name__ == '__main__':
-    start_nyamuk(MQTT.server, MQTT.client_3d, MQTT.topic_temp)
+    start_nyamuk(MQTT.server, "fhgfhgf", MQTT.topic_temp)
     
     

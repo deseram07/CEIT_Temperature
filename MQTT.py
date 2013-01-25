@@ -12,7 +12,7 @@ class MQTT:
     threed_pub = None
     client_cosm = "LIB_cosm"
     client_ts = "LIB_ts"
-    client_3d = "LIB_3d"
+    client_3d = "LIB_3d_151321"
     client_sense = "LIB_sense"
     client_3bpub = "3dPub"
     server = "winter.ceit.uq.edu.au"
