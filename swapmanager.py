@@ -36,6 +36,15 @@ from nyamuk import nyamuk
 import nyamuk.nyamuk_const as NC
 import json
 
+import logging
+
+logger = logging.getLogger('lib_temp')
+hdlr = logging.FileHandler('/var/log/lib_temp.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr) 
+logger.setLevel(logging.INFO)
+
 class SwapManager(SwapInterface):
     """
     SWAP Management Class
@@ -125,6 +134,7 @@ class SwapManager(SwapInterface):
 #            print data
 #            if (endp.name == "Temperature" || endp.name == "Voltage"):
             print "updating list"
+            logger.info('Connecting and subscribing to the mote filtering database')
             self.db_connect()
             database_data = self.db_subscribe()
             database_data = str(database_data)
@@ -137,16 +147,18 @@ class SwapManager(SwapInterface):
                         motes = i['mote']
                         for j in motes:
                             if str(j['id']) == str(endp.id):
-                                print "****************\n****************\n****************\n****************\n"
                                 MQTT.ny = nyamuk.Nyamuk(MQTT.client, server = MQTT.server)
                                 MQTT.rc = MQTT.ny.connect()
                                 if(MQTT.ny.publish(MQTT.topic_temp, data, retain = True) == 0,):
+                                    logger.info('Published data')
                                     print "published = " + data
                                 else:
+                                    logger.error('Failed to publish data')
                                     print "publish failed"
                                 MQTT.ny.loop()
             except ValueError:
                 print "Error"
+                logger.error('Error reading json string')
             
     def get_status(self, endpoints):
         """
@@ -168,7 +180,6 @@ class SwapManager(SwapInterface):
                 endp = self.get_endpoint(item["id"], item["location"], item["name"])
                 if endp is not None:
                     status.append(endp.dumps()) 
-        
         return status
             
   
@@ -178,11 +189,13 @@ class SwapManager(SwapInterface):
         Stop SWAP manager
         """
         # Stop SWAP server
+        logger.error('Server dead for some reason')
         self.server.stop()
         sys.exit(0)
 
     def db_subscribe(self):
         while 1:
+            logger.info('Filtering motes')
             topic_db = MQTT.topic_db + MQTT.pi_id[0]
             rdb =MQTT.database5.subscribe(topic_db,0)
             if rdb == NC.ERR_SUCCESS:
@@ -194,6 +207,7 @@ class SwapManager(SwapInterface):
                             ev = None
                             break
                     elif ev.type == 1000:
+                        logger.error('Network error')
                         print "Network Error. Msg = ", ev.msg
                 rdb = MQTT.database5.loop()
         return payload
@@ -203,9 +217,11 @@ class SwapManager(SwapInterface):
             MQTT.database5 = nyamuk.Nyamuk(MQTT.client_dblib, None, None, MQTT.server)
             rdb = MQTT.database5.connect()
             if (rdb != NC.ERR_SUCCESS):
+                logger.error('Cant connect to subscribe')
                 print "Can't connect"
                 time.sleep(30)
             else:
+                logger.info("Connection successful for subscription")
                 print "Connection successful"
             return
 
