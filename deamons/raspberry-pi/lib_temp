@@ -1,16 +1,14 @@
 #!/bin/bash
 
 DAEMON=/usr/bin/python
-ARGS="/home/pi/CEIT_Temperature/lib_temp.py 301`"
+ARGS=/home/pi/CEIT_Temperature/lib_temp.py 301
 PIDFILE=/var/run/lib_temp.pid
 
 case "$1" in
   start)
     echo "Starting server"
     /sbin/start-stop-daemon --start --pidfile $PIDFILE \
-        --user www-data --group www-data \
         -b --make-pidfile \
-        --chuid www-data \
         --exec $DAEMON $ARGS
     ;;
   stop)
