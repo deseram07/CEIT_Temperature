@@ -1,0 +1,23 @@
+Setting up lib_temp as a deamon.
+
+Move the file lib_temp into /etc/init.d directory
+Make the file executable
+
+To start the program
+	/etc/init.d/lib_temp start
+To stop the program
+	/etc/init.d/lib_temp stop
+
+To restart the software 60s after it dies, you need to add the 
+program onto crontab. To do this
+	sudo crontab-e
+
+Add the line
+	***** /etc/init.d/lib_temp start
+
+To start the program automatically on startup. You need to use update-rc.d
+	sudo update-rc.d -f lib_temp defaults
+
+And if you ever want to delete it
+	sudo update-rc.d -f lib_temp remove
+
