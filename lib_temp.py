@@ -47,6 +47,7 @@ if __name__ == '__main__':
     except SwapException as ex:
         ex.display()
         ex.log()
-
+        sys.exit(-1)
+        
     signal.pause()
 
