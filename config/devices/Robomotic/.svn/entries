@@ -1,8 +1,8 @@
 10
 
 dir
-810
-https://panstamp.googlecode.com/svn/tags/python/lagarto_1.2/lagarto-swap/config/devices/Robomotic
+842
+https://panstamp.googlecode.com/svn/trunk/devices/Robomotic
 https://panstamp.googlecode.com/svn
 
 
@@ -25,4 +25,38 @@ robomotic@gmail.com
 
 
 d77f469f-0316-7e13-d0a9-da7f422f7f4c
+
+SeismoFloor.xml
+file
+
+
+
+
+2013-01-22T22:17:46.455274Z
+c11238a7e9b3ec351340045c59743cf8
+2012-09-24T12:04:44.372534Z
+735
+robomotic@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2455
 

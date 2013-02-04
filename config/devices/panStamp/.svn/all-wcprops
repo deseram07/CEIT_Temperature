@@ -1,53 +1,77 @@
 K 25
 svn:wc:ra_dav:version-url
-V 78
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp
-END
-lcddriver.xml
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/lcddriver.xml
-END
-temphum.xml
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/temphum.xml
-END
-bininps.xml
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/bininps.xml
-END
-temppress.xml
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/temppress.xml
-END
-binouts.xml
-K 25
-svn:wc:ra_dav:version-url
-V 90
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/binouts.xml
-END
-temp.xml
-K 25
-svn:wc:ra_dav:version-url
-V 87
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/temp.xml
-END
-rgbdriver.xml
-K 25
-svn:wc:ra_dav:version-url
-V 92
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/rgbdriver.xml
+V 40
+/svn/!svn/ver/834/trunk/devices/panStamp
 END
 chronos.xml
 K 25
 svn:wc:ra_dav:version-url
-V 90
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp/chronos.xml
+V 52
+/svn/!svn/ver/386/trunk/devices/panStamp/chronos.xml
+END
+meter.xml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/834/trunk/devices/panStamp/meter.xml
+END
+lcddriver.xml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/621/trunk/devices/panStamp/lcddriver.xml
+END
+temphum.xml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/440/trunk/devices/panStamp/temphum.xml
+END
+bininps.xml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/406/trunk/devices/panStamp/bininps.xml
+END
+temppress.xml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/625/trunk/devices/panStamp/temppress.xml
+END
+pulsegen.xml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/631/trunk/devices/panStamp/pulsegen.xml
+END
+binouts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/507/trunk/devices/panStamp/binouts.xml
+END
+temp.xml
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/386/trunk/devices/panStamp/temp.xml
+END
+binouts2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/767/trunk/devices/panStamp/binouts2.xml
+END
+rgbdriver.xml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/670/trunk/devices/panStamp/rgbdriver.xml
+END
+pulsecounter.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/631/trunk/devices/panStamp/pulsecounter.xml
 END

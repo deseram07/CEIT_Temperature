@@ -12,8 +12,12 @@
     <dev id="9" name="pulsegen" label="Programmable pulse generator"/>
     <dev id="10" name="pulsecounter" label="Pulse counter"/>
     <dev id="11" name="meter" label="Energy meter"/>
+    <dev id="12" name="binouts2" label="Advanced Binary/PWM output module + repeater"/>
   </developer>
   <developer id="17" name="Robomotic">
     <dev id="2" name="SeismoFloor" label="Floor sensor"/>
   </developer>
+	<developer id="22" name="Luka Mustafa - Musti">
+		<dev id="1" name="sfpddm" label="SFP DDM monitoring system"/>
+	</developer>
 </devices>

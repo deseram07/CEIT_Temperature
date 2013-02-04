@@ -4,8 +4,9 @@
   <product>RGB LED controller</product>
   <pwrdownmode>false</pwrdownmode>
   <regular>
-    <reg name="RGB" id="10">
+    <reg name="RGB" id="11">
       <endpoint name="RGBlevel" type="num" dir="out">
+        <size>3</size>
       </endpoint>
       <endpoint name="Red" type="num" dir="out">
         <position>0</position>

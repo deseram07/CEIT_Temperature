@@ -2,7 +2,7 @@
 <settings>
 	<debug>2</debug>
 	<devices>
-		<local>/home/pi/lib_temp/CEIT_Temperature/config/devices</local>
+		<local>/home/pi/CEIT_Temperature/config/devices</local>
 		<remote>http://www.panstamp.com/downloads/devices.tar</remote>
 		<update>True</update>
 	</devices>

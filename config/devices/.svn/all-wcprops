@@ -1,17 +1,17 @@
 K 25
 svn:wc:ra_dav:version-url
-V 69
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices
+V 31
+/svn/!svn/ver/834/trunk/devices
 END
 template.xml
 K 25
 svn:wc:ra_dav:version-url
-V 82
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/template.xml
+V 44
+/svn/!svn/ver/295/trunk/devices/template.xml
 END
 devices.xml
 K 25
 svn:wc:ra_dav:version-url
-V 81
-/svn/!svn/ver/783/tags/python/lagarto_1.2/lagarto-swap/config/devices/devices.xml
+V 43
+/svn/!svn/ver/844/trunk/devices/devices.xml
 END
