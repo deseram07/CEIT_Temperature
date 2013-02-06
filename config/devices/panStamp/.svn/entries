@@ -1,14 +1,14 @@
 10
 
 dir
-810
-https://panstamp.googlecode.com/svn/tags/python/lagarto_1.2/lagarto-swap/config/devices/panStamp
+842
+https://panstamp.googlecode.com/svn/trunk/devices/panStamp
 https://panstamp.googlecode.com/svn
 
 
 
-2012-04-11T15:06:43.217545Z
-513
+2012-12-17T15:40:48.226993Z
+834
 dberenguer@usapiens.com
 
 
@@ -26,50 +26,16 @@ dberenguer@usapiens.com
 
 d77f469f-0316-7e13-d0a9-da7f422f7f4c
 
-chronos.xml
-file
-
-
-
-
-2012-11-19T02:05:25.909189Z
-8c59354eef8f4c20e682f820aeff8729
-2012-02-19T14:03:56.928199Z
-446
-dberenguer@usapiens.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-12965
-
 lcddriver.xml
 file
 
 
 
 
-2012-11-19T02:05:25.909189Z
-4a0e3421c6ff4eef5b321b9f39337067
-2012-02-19T14:03:56.928199Z
-446
+2012-12-23T12:35:27.595376Z
+bbd90f6aa7ad5506706462c9f69f37cd
+2012-07-21T21:22:20.405431Z
+621
 dberenguer@usapiens.com
 
 
@@ -100,10 +66,10 @@ file
 
 
 
-2012-11-19T02:05:25.909189Z
+2012-02-02T21:10:13.560309Z
 80284494ae86976e478fa6903c952c22
-2012-02-19T14:03:56.928199Z
-446
+2012-02-02T21:11:03.462368Z
+440
 dberenguer@usapiens.com
 
 
@@ -134,10 +100,10 @@ file
 
 
 
-2012-11-19T02:05:25.909189Z
+2012-02-13T10:53:18.730395Z
 5ed563d7132603baac535855aca0a2e0
-2012-02-19T14:03:56.928199Z
-446
+2012-01-27T12:25:24.208081Z
+406
 dberenguer@usapiens.com
 
 
@@ -168,10 +134,10 @@ file
 
 
 
-2012-11-19T02:05:25.909189Z
-73a5c9845bca77c2a496d4e9447725dd
-2012-02-19T14:03:56.928199Z
-446
+2012-12-23T12:35:27.595376Z
+c4c3c7a96401c4f2a19572bb53a9adc6
+2012-07-21T22:35:53.907131Z
+625
 dberenguer@usapiens.com
 
 
@@ -194,7 +160,41 @@ dberenguer@usapiens.com
 
 
 
-1128
+1137
+
+pulsegen.xml
+file
+
+
+
+
+2012-12-23T12:35:27.595376Z
+fe6279facde05740ed262f23015c0354
+2012-07-24T11:02:59.401005Z
+631
+dberenguer@usapiens.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+922
 
 binouts.xml
 file
@@ -202,10 +202,10 @@ file
 
 
 
-2012-11-19T02:05:25.909189Z
+2012-03-11T15:46:00.480364Z
 ad8ee7e39525a40ceda6167f71970f0a
-2012-04-11T15:06:43.217545Z
-513
+2012-03-11T15:51:11.942917Z
+507
 dberenguer@usapiens.com
 
 
@@ -236,10 +236,10 @@ file
 
 
 
-2012-11-19T02:05:25.909189Z
+2012-01-26T15:30:04.621610Z
 f6a5331bbaf03a61f40f4ae642270441
-2012-02-19T14:03:56.928199Z
-446
+2012-01-26T12:09:25.928270Z
+386
 dberenguer@usapiens.com
 
 
@@ -264,16 +264,16 @@ dberenguer@usapiens.com
 
 778
 
-rgbdriver.xml
+binouts2.xml
 file
 
 
 
 
-2012-11-19T02:05:25.909189Z
-dcf369b1f0b95e642f9deac9791fe6ed
-2012-02-19T14:03:56.928199Z
-446
+2012-12-23T12:35:27.595376Z
+1952ef042b0795afb8109d5e6393ed46
+2012-10-17T11:26:46.108982Z
+767
 dberenguer@usapiens.com
 
 
@@ -296,5 +296,141 @@ dberenguer@usapiens.com
 
 
 
-653
+1743
+
+rgbdriver.xml
+file
+
+
+
+
+2012-12-23T12:35:27.595376Z
+73590f12805e8ff142f027a412eca20f
+2012-08-21T10:05:18.498331Z
+670
+dberenguer@usapiens.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+676
+
+pulsecounter.xml
+file
+
+
+
+
+2012-12-23T12:35:27.595376Z
+5ef33730d8b97f8472ba260f2793d9d7
+2012-07-24T11:02:59.401005Z
+631
+dberenguer@usapiens.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+585
+
+chronos.xml
+file
+
+
+
+
+2012-01-26T15:30:04.621610Z
+8c59354eef8f4c20e682f820aeff8729
+2012-01-26T12:09:25.928270Z
+386
+dberenguer@usapiens.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12965
+
+meter.xml
+file
+
+
+
+
+2012-12-23T12:35:27.595376Z
+ca9249b52b195ee733751db3f6aabfc5
+2012-12-17T15:40:48.226993Z
+834
+dberenguer@usapiens.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+19393
 

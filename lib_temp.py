@@ -45,9 +45,10 @@ if __name__ == '__main__':
         # SWAP manager
         swap_manager = SwapManager(settings)     
     except SwapException as ex:
+	sys.exit(1)
         ex.display()
         ex.log()
-        sys.exit(-1)
+       
         
     signal.pause()
 

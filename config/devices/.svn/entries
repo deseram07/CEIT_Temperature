@@ -1,15 +1,15 @@
 10
 
 dir
-810
-https://panstamp.googlecode.com/svn/tags/python/lagarto_1.2/lagarto-swap/config/devices
+842
+https://panstamp.googlecode.com/svn/trunk/devices
 https://panstamp.googlecode.com/svn
 
 
 
-2012-09-24T12:04:44.372534Z
-735
-robomotic@gmail.com
+2012-12-17T15:40:48.226993Z
+834
+dberenguer@usapiens.com
 
 
 
@@ -26,56 +26,16 @@ robomotic@gmail.com
 
 d77f469f-0316-7e13-d0a9-da7f422f7f4c
 
-Robomotic
-dir
-
-devices.xml
-file
-
-
-
-
-2012-11-19T02:05:26.073189Z
-d0f5907ce92713bc54e13cc41438539a
-2012-09-17T15:56:16.101757Z
-718
-robomotic@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-940
-
-panStamp
-dir
-
 template.xml
 file
 
 
 
 
-2012-11-19T02:05:26.073189Z
+2011-12-29T10:37:25.645167Z
 5d61bdda702ce12e1dfc4e0b04bc5b76
-2012-02-19T14:03:56.928199Z
-446
+2011-12-29T10:40:54.368058Z
+295
 dberenguer@usapiens.com
 
 
@@ -99,4 +59,47 @@ dberenguer@usapiens.com
 
 
 1987
+
+Luka Mustafa - Musti
+dir
+
+Robomotic
+dir
+
+devices.xml
+file
+844
+
+
+
+2013-01-22T22:18:32.111500Z
+3a20b2c23f07515fa19dc56be7735146
+2013-01-22T22:28:11.017903Z
+844
+dberenguer@usapiens.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1155
+
+panStamp
+dir
 
