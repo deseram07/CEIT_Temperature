@@ -26,7 +26,7 @@ def handle_payload(ev):
         except ValueError:
             return
         
-        for name in parser.items(section[0]):
+        for name in parser.items('thingspeak'):
             if name[0] == data2['id']:
                 field_id = name[1][:7]
                 api_key = name[1][8:]

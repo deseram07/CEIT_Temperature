@@ -12,7 +12,7 @@ def handle_payload(ev):
     msg = ev.msg
     parser = SafeConfigParser()
     parser.read('data.ini')
-    section = parser.sections()
+#    section = parser.sections()
     
     if msg.payload is not None:
         data = msg.payload
@@ -21,8 +21,11 @@ def handle_payload(ev):
             data2 = json.loads(data)
         except ValueError:
             return
-        
-    for name in parser.items(section[1]):
+    
+#    for section_name in parser.sections():
+#          if section_name == ''
+    for name in parser.items('Open.sen'):
+        print name[0]
         if name[0] == data2['id']:
             sen_id = name[1]
             value = data2['value']
