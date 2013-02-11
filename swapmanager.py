@@ -24,6 +24,9 @@
 #########################################################################
 __author__="Daniel Berenguer"
 __date__  ="$Jan 23, 2012$"
+
+__edited__="Buddhika De Seram"
+__date__="02/01/2012"
 #########################################################################
 
 from swap.SwapInterface import SwapInterface
@@ -37,6 +40,7 @@ import nyamuk.nyamuk_const as NC
 import json
 
 import logging
+import random
 
 logger = logging.getLogger('lib_temp')
 hdlr = logging.FileHandler('/var/log/lib_temp.log')
@@ -197,9 +201,9 @@ class SwapManager(SwapInterface):
         while 1:
             logger.info('Filtering motes')
             topic_db = MQTT.topic_db + MQTT.pi_id[0]
-            rdb =MQTT.database5.subscribe(topic_db,0)
+            rdb =MQTT.database.subscribe(topic_db,0)
             if rdb == NC.ERR_SUCCESS:
-                ev = MQTT.database5.pop_event()
+                ev = MQTT.database.pop_event()
                 if ev != None: 
                     if ev.type == NC.CMD_PUBLISH:
                         payload = ev.msg.payload
@@ -209,13 +213,13 @@ class SwapManager(SwapInterface):
                     elif ev.type == 1000:
                         logger.error('Network error')
                         print "Network Error. Msg = ", ev.msg
-                rdb = MQTT.database5.loop()
+                rdb = MQTT.database.loop()
         return payload
     
     def db_connect(self):
         while 1:
-            MQTT.database5 = nyamuk.Nyamuk(MQTT.client_dblib, None, None, MQTT.server)
-            rdb = MQTT.database5.connect()
+            MQTT.database = nyamuk.Nyamuk((MQTT.client_dblib + str(random.randint(1000, 10000))), None, None, MQTT.server)
+            rdb = MQTT.database.connect()
             if (rdb != NC.ERR_SUCCESS):
                 logger.error('Cant connect to subscribe')
                 print "Can't connect"

@@ -1,19 +1,20 @@
 '''
 Created on the Dec 06, 2012
-
 @author: Buddhika De Seram
 '''
+#This program is used to specify which temperature sensors can communicate 
+#with a specific base stations. It also allocates the base station with an ID
+#and can also be used to delete base stations and sensors 
 
 import sys
 import time
-import signal
 from nyamuk import nyamuk
 import nyamuk.nyamuk_const as NC
 import json
-import random
 
 from config import config
 import wx
+import random
 
 [wxID_FRAME1, wxID_FRAME1BUTTON1, wxID_FRAME1BUTTON2, wxID_FRAME1LISTBOX1, 
 ] = [wx.NewId() for _init_ctrls in range(4)]
@@ -64,17 +65,6 @@ class configuration(wx.Frame):
         self.addmoteid = wx.TextCtrl(self, pos = (80,205), size = (60,-1))
         self.Bind(wx.EVT_TEXT, self.EvtText, self.addmoteid)
         
-##        thingspeak id
-#        self.lbladdfield =  wx.StaticText(self, label = "Field ID", pos = (90, 185))
-#        self.addfield = wx.TextCtrl(self,pos = (90,205), size = (60,-1))
-#        self.Bind(wx.EVT_TEXT, self.EvtText2, self.addfield)
-#        
-##        sense id
-#        self.lbladdfield =  wx.StaticText(self, label = "Sen.se ID", pos = (170, 185))
-#        self.addsen = wx.TextCtrl(self,pos = (170,205), size = (60,-1))
-#        self.Bind(wx.EVT_TEXT, self.EvtText3, self.addsen)
-        
-#        register pi
         self.addpi = wx.StaticBox(self,-1, label = "Add Base Station:", pos = (4, 275), size=(235,90))
         self.lbllevellist = wx.StaticText(self, label = "Building Level", pos = (40, 300))        
         self.setlevel = wx.ComboBox(self, pos = (140, 295), size = (50,-1),
@@ -190,14 +180,6 @@ class configuration(wx.Frame):
     def EvtText(self,event):
         self.newmote = event.GetString()
         print 'Evttext1:', event.GetString()
-    
-#    def EvtText2(self,event):
-#        self.newfeild = event.GetString()
-#        print 'Evttext2:', event.GetString()
-#    
-#    def EvtText3(self,event):
-#        self.newsen = event.GetString()
-#        print 'Evttext3:', event.GetString()
         
     def deletemote(self,event):
         print self.currentpi
@@ -377,8 +359,8 @@ class configuration(wx.Frame):
     
     def connect(self):
         while 1:
-            config.np = nyamuk.Nyamuk(config.client_pub, server = config.server)
-            config.ns = nyamuk.Nyamuk(config.client_sub, server = config.server)
+            config.np = nyamuk.Nyamuk((config.client_pub  + str(random.randint(1000, 10000))), server = config.server)
+            config.ns = nyamuk.Nyamuk((config.client_sub  + str(random.randint(1000, 10000))), server = config.server)
             rs = config.ns.connect()
             rp = config.np.connect()
             if (rs != NC.ERR_SUCCESS) or (rp != NC.ERR_SUCCESS):

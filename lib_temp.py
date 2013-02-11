@@ -1,8 +1,6 @@
 #########################################################################
 __author__="Buddhika De Seram"
 __date__  ="$Dec 02, 2012$"
-__appname__= "lib_temp"
-__version__= "0.1"
 #########################################################################
 
 from swap.SwapException import SwapException
@@ -17,7 +15,7 @@ from MQTT import MQTT
 from nyamuk import nyamuk
 import nyamuk.nyamuk_const as NC
 from nyamuk import event
-
+import random
 
 def signal_handler(signal, frame):
     """
@@ -34,7 +32,7 @@ if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal_handler)
     
     # if no sigint
-    MQTT.ny = nyamuk.Nyamuk(MQTT.client, server = MQTT.server)
+    MQTT.ny = nyamuk.Nyamuk((MQTT.client + str(random.randint(1000, 10000))), server = MQTT.server)
     rc = MQTT.ny.connect()
     if rc != NC.ERR_SUCCESS:
         print "Can't connect"
@@ -45,7 +43,7 @@ if __name__ == '__main__':
         # SWAP manager
         swap_manager = SwapManager(settings)     
     except SwapException as ex:
-	sys.exit(1)
+        sys.exit(1)
         ex.display()
         ex.log()
        

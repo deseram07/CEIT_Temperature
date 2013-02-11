@@ -1,3 +1,11 @@
+################################################################
+__author__="Buddhika De Seram"
+__date__="04/02/2012"
+################################################################
+
+#This program receives the raw temperature data from MQTT and
+#posts the data up on thingspeak
+
 import sys
 import time
 from MQTT import MQTT
@@ -7,6 +15,7 @@ from nyamuk import nyamuk_const as NC
 import json
 from clouding import ThingSpeakPacket
 from ConfigParser import SafeConfigParser
+import random
 
 def handle_payload(ev):
     msg = ev.msg
@@ -64,5 +73,5 @@ def start_nyamuk(server, client_id, topic, username = None, password = None):
                 break
  
 if __name__ == '__main__':
-    start_nyamuk(MQTT.server, MQTT.client_ts, MQTT.topic_temp)
+    start_nyamuk(MQTT.server, (MQTT.client_ts+ random.randint(1000, 10000)), MQTT.topic_temp)
     

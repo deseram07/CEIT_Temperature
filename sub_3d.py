@@ -1,3 +1,10 @@
+################################################################
+__author__="Buddhika De Seram"
+__date__="04/02/2012"
+################################################################
+#This program receives data from MQTT and publishes the data onto
+#the 3D models MQTT topic
+
 import sys
 import time
 from MQTT import MQTT
@@ -5,6 +12,7 @@ from MQTT import MQTT
 from nyamuk import nyamuk
 from nyamuk import nyamuk_const as NC
 import json
+import random
 
 def handle_payload(ev):
     msg = ev.msg
@@ -39,7 +47,7 @@ def handle_payload(ev):
             
 def connect():
     while 1:
-        MQTT.threed_pub = nyamuk.Nyamuk("aadfvb23456", None, None, MQTT.server)
+        MQTT.threed_pub = nyamuk.Nyamuk((MQTT.client_3bpub + str(random.randint(1000, 10000)), None, None, MQTT.server)
         rcpub = MQTT.threed_pub.connect()
         if (rcpub != NC.ERR_SUCCESS):
             print "Can't connect"
@@ -75,6 +83,6 @@ def start_nyamuk(server, client_id, topic, username = None, password = None):
                 break
     
 if __name__ == '__main__':
-    start_nyamuk(MQTT.server, "fhgfhgf", MQTT.topic_temp)
+    start_nyamuk(MQTT.server, (MQTT.client_3d + str(random.randint(1000, 10000)), MQTT.topic_temp)
     
     
